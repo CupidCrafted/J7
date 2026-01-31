@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temis Jewelry | Launch Poster</title>
+    <style>
+        body {
+            background-color: #4A0404; /* Deep Royal Burgundy */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Didot', 'Bodoni MT', 'Georgia', serif;
+            color: #D4AF37; /* 24K Gold */
+            overflow: hidden;
+        }
+
+        /* Subtle floating silhouettes in background */
+        .princess-bg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            opacity: 0.12;
+            pointer-events: none;
+        }
+
+        .princess {
+            position: absolute;
+            fill: #D4AF37;
+        }
+
+        #poster-container {
+            text-align: center;
+            z-index: 10;
+            max-width: 600px;
+            padding: 40px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            background: rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(5px);
+        }
+
+        .brand-name {
+            font-size: 1.2rem;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            opacity: 0.9;
+        }
+
+        .big-title {
+            font-size: 3rem;
+            font-weight: bold;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            margin: 0;
+            text-shadow: 0 0 15px rgba(212, 175, 55, 0.6);
+        }
+
+        .tagline {
+            font-size: 1rem;
+            letter-spacing: 3px;
+            margin-top: 10px;
+            font-style: italic;
+        }
+
+        /* The 11 Legends Grid */
+        #silhouette-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr); /* 6 on top, 5 on bottom */
+            gap: 15px;
+            margin: 40px 0;
+            justify-items: center;
+        }
+
+        /* Specific layout to center the 11th item */
+        #silhouette-grid :nth-child(n+7) {
+            grid-row: 2;
+        }
+
+        .card-blur {
+            width: 50px;
+            height: 70px;
+            background: linear-gradient(135deg, #D4AF37 0%, #B8860B 100%);
+            border-radius: 3px;
+            filter: blur(12px);
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+        }
+
+        .launch-box {
+            margin-top: 30px;
+        }
+
+        .launch-date {
+            font-size: 1.8rem;
+            letter-spacing: 4px;
+            font-weight: bold;
+            color: #FFFFFF;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+
+        .essentials {
+            font-size: 0.9rem;
+            letter-spacing: 5px;
+            margin-top: 10px;
+            text-transform: uppercase;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="princess-bg" id="princess-layer"></div>
+
+    <div id="poster-container">
+        <div class="brand-name">Temis Presents</div>
+        <h1 class="big-title">The Royal Collection</h1>
+        <div class="tagline">11 Legends. Reimagined.</div>
+
+        <div id="silhouette-grid">
+            <div class="card-blur"></div><div class="card-blur"></div><div class="card-blur"></div>
+            <div class="card-blur"></div><div class="card-blur"></div><div class="card-blur"></div>
+            <div class="card-blur"></div><div class="card-blur"></div><div class="card-blur"></div>
+            <div class="card-blur"></div><div class="card-blur"></div>
+        </div>
+
+        <div class="launch-box">
+            <div class="launch-date">LAUNCHING TOMORROW</div>
+            <div class="essentials">Shine in your essentials</div>
+        </div>
+    </div>
+
+<script>
+    // Background Princess Decoration
+    const bg = document.getElementById("princess-layer");
+    const hourglassPrincess = `<path d="M11,1 L13,1 L12,0 L11,1 M10,2 Q12,0 14,2 L13,3 L11,3 Z M12,3.5 C11.2,3.5 10.5,4.2 10.5,5 C10.5,5.8 11.2,6.5 12,6.5 C12.8,6.5 13.5,5.8 13.5,5 C13.5,4.2 12.8,3.5 12,3.5 M9,7 C8,7 7.5,7.5 7.5,8.5 C7.5,9.5 8.5,10.5 10,10.5 L11,10.5 M15,7 C16,7 16.5,7.5 16.5,8.5 C16.5,9.5 15.5,10.5 14,10.5 L13,10.5 M11,10.5 L13,10.5 C12.5,11.5 12.5,12 11.5,13 L12.5,13 C11.5,13 11,12.5 11,10.5 M11.5,13 C11,13 6,15 4,22 L20,22 C18,15 13,13 12.5,13 Z"/>`;
+
+    for(let i=0; i<8; i++) {
+        let p = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+        p.setAttribute("viewBox", "0 0 24 24");
+        p.classList.add("princess");
+        p.style.width = (Math.random() * 50 + 100) + "px";
+        p.style.left = Math.random() * 90 + "%";
+        p.style.top = Math.random() * 90 + "%";
+        p.style.transform = `rotate(${Math.random() * 20 - 10}deg)`;
+        p.innerHTML = hourglassPrincess;
+        bg.appendChild(p);
+    }
+</script>
+</body>
+</html>
